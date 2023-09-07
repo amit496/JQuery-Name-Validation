@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rays Coding-JQuery Validation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container mt-5 form_box">
+        <div class="row">
+            <div class="card p-0">
+                <div class="card-header bg-primary">
+                    <h3 class="text-center text-white">Rays Coding :- JQuery Form Validation</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form action="#" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            <input type="text" name="user_name" class="form-control" id="username"
+                                                placeholder="Enter Your Name" autocomplete="off">
+                                            <span id="name_error" class="nameerror"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <button type="submit" class="btn btn-primary mt-4" name="sub_btn"
+                                            id="sub_button">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 validationtext">
+                    <h1>jQuery Name Validation</h1>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.2.slim.min.js"
+            integrity="sha256-E3P3OaTZH+HlEM7f1gdAT3lHAn4nWBZXuYe89DFg2d0=" crossorigin="anonymous"></script>
+        <!-- jquery  CDN -->
+        <script>
+            // start validation code
+
+            $(document).ready(function () {
+                
+                // get the value of input  box on the button click/
+                $('#sub_button').on('click', function () {
+                    let store_name_value = $('#username').val();
+                    if(store_name_value == '')
+                    {
+                        $('#name_error').text("Please Enter Your Name");
+                        $('#name_error').css('color', '#e74c3c');
+                        $('#username').focus();
+                        return false;
+                    }
+
+                    if(store_name_value.length < 3 )
+                    {
+                        $('#name_error').text("Please Enter Correct Name");
+                        $('#name_error').css('color', '#ed4c67');
+                        $('#username').focus();
+                        return false;
+                    }
+
+                    let name_regexp = /^[a-zA-z]{3,50}$/;
+
+                    if(!store_name_value.match(name_regexp) )
+                    {
+                        $('#name_error').text("Please Enter Correct Name");
+                        $('#name_error').css('color', '#co392b');
+                        $('#username').focus();
+                        return false;
+                    }
+                });
+
+
+                // the validation is complete 
+
+                // next email validation 
+
+            });
+
+        </script>
+</body>
+
+</html>
